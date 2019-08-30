@@ -40,6 +40,8 @@ def find_ver_from_compver(kburl, version):
         logging.error("Failed to retrieve component, status code: {}".format(component.status_code))
         return "", "", 0, "", ""
     bdcomp_sourceurl = component.json().get('url')
+    if bdcomp_sourceurl:
+        bdcomp_sourceurl = bdcomp_sourceurl.replace(';','')
     #
     # Request the list of versions for this component
     compname = component.json().get('name')
@@ -108,7 +110,7 @@ def find_ver_from_compver(kburl, version):
                             logging.debug("Found component block 3 - version="+ matchversion)
                                   
     if matchversion != "":
-        return compname, matchversion, matchstrength, bdcomp_sourceurl.replace(';',''), kbver_url
+        return compname, matchversion, matchstrength, bdcomp_sourceurl, kbver_url
     
     return "", "", 0, "", ""
 
@@ -228,7 +230,7 @@ def find_comp_from_kb(compstring, version, outkbfile, inkbfile, replace_strings)
 
     if max_matchstrength > 0:
         print(" - MATCHED '{}/{}' (sourceURL={})".format(found_comp, found_version, source_url))
-        return "{};{};{};{};{};{};\n".format(compstring,found_comp,source_url.replace(';', ''),comp_url,version,compver_url)
+        return "{};{};{};{};{};{};\n".format(compstring,found_comp,source_url,comp_url,version,compver_url)
 
     else:
         print(" - NO MATCH")
