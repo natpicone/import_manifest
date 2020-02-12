@@ -421,7 +421,7 @@ def manage_project_version(proj, ver):
     bdversion = hub.get_version_by_name(bdproject, ver)
     if not bdversion:
         resp = hub.create_project_version(bdproject, ver)
-        if resp.status_code != 200:
+        if resp.status_code != 201:
             logging.debug("Cannot create version {}".format(ver))
             return None, None
         print("Created version '{}'".format(ver))
