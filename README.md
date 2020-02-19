@@ -26,6 +26,30 @@ Python 3 and the Black Duck https://github.com/blackducksoftware/hub-rest-api-py
 
 An API key for the Black Duck server must also be configured in the `.restconfig.json` file in the package folder.
 
+# INSTALLATION
+
+First install the `hub-rest-api-python` package:
+
+    git clone https://github.com/blackducksoftware/hub-rest-api-python.git
+    cd hub-rest-api-python
+    pip3 install -r requirements.txt
+    pip3 install .
+
+Or 
+    
+    pip install blackduck
+    
+Extract this GIT repo into a folder (`git clone https://github.com/matthewb66/import_manifest`).
+
+Configure the hub connection in the `.restconfig.json` file within the `import_manifest` folder - example contents:
+
+    {
+      "baseurl": "https://myhub.blackducksoftware.com",
+      "api_token": "YWZkOTE5NGYtNzUxYS00NDFmLWJjNzItYmYwY2VlNDIxYzUwOmE4NjNlNmEzLWRlNTItNGFiMC04YTYwLWRBBWQ2MDFlMjA0Mg==",
+      "insecure": true,
+      "debug": false
+    }
+
 # USAGE
 
 The `import_manifest.py` script must be invoked with one of the 2 modes kblookup or import as shown in the usage text below:
