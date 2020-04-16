@@ -332,16 +332,16 @@ def import_kbfile(kbfile, outfile):
         elements = line.split(";")
         compname = elements[0]
         kbcompurl = elements[3]
-        #if kbcompurl != "NO MATCH":
+        if kbcompurl != "NO MATCH":
         #kblookupdict[compname] = kbcompurl
-        kblookupdict.setdefault(compname, []).append(kbcompurl)
-        index = 4
-        while index < len(elements) - 1:
-            kbverdict[compname + "/" + elements[index]] = elements[index+1]
-            index += 2
+            kblookupdict.setdefault(compname, []).append(kbcompurl)
+            index = 4
+            while index < len(elements) - 1:
+                kbverdict[compname + "/" + elements[index]] = elements[index+1]
+                index += 2
         #elif kbcompurl == "NO MATCH":
         #    kblookupdict.setdefault(compname, []).append("NO MATCH")
-        count += 1
+            count += 1
         if output:
             ofile.write(line)
     
