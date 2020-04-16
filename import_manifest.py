@@ -626,9 +626,10 @@ if args.command == 'import':
                 for kburl in kblookupdict[package]:
                     #
                     # Loop through component URLs from kbfile
-                    kbverurl, srcurl = find_compver_from_compurl(package, kburl, version)
-                    if kbverurl != "NO VERSION MATCH":
-                        break
+                    if kburl != "NO MATCH":
+                        kbverurl, srcurl = find_compver_from_compurl(package, kburl, version)
+                        if kbverurl != "NO VERSION MATCH":
+                            break
             if kbverurl != "NO VERSION MATCH":
                 #
                 # Component does not exist in project
